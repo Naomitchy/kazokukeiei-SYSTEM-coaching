@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>家族経営のためのシステムコーチング｜飲み込んだ言葉の分だけ、すれ違っていく。</title>
+<title>すれ違う線に、交わる場所を。｜家族経営のためのシステムコーチング</title>
 <meta name="description" content="家族経営が上手くいかない理由は、誰か一人の考え方ではなく、家族と会社のあいだにある「いつもの流れ」にあるのかもしれません。私たちは、その関係に働きかけるコーチです。">
 
-<meta property="og:title" content="家族経営のためのシステムコーチング｜飲み込んだ言葉の分だけ、すれ違っていく。">
+<meta property="og:title" content="すれ違う線に、交わる場所を。｜家族経営のためのシステムコーチング">
 <meta property="og:description" content="家族経営が上手くいかない理由は、誰か一人の考え方ではなく、家族と会社のあいだにある「いつもの流れ」にあるのかもしれません。私たちは、その関係に働きかけるコーチです。">
 <meta property="og:type" content="website">
 <!-- TODO: 公開後の正式URLを設定する -->
@@ -156,12 +156,8 @@
     overflow: hidden;
     pointer-events: none;
     opacity: 0.35;
-    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 24%, transparent 44%),
-                        radial-gradient(150% 80% at 100% 100%, #000 0%, #000 40%, transparent 82%);
-            mask-image: linear-gradient(to bottom, #000 0%, #000 24%, transparent 44%),
-                        radial-gradient(150% 80% at 100% 100%, #000 0%, #000 40%, transparent 82%);
-    -webkit-mask-composite: source-over;
-            mask-composite: add;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 72%, transparent 96%);
+            mask-image: linear-gradient(to bottom, #000 0%, #000 72%, transparent 96%);
   }
   .hero-lines > svg { display: block; width: 100%; height: 100%; }
 
@@ -183,7 +179,10 @@
   }
 
   @keyframes heroDraw { to { stroke-dashoffset: 0; } }
-  @keyframes heroInk  { to { opacity: 0.7; } }
+  @keyframes heroInkBleed {
+    from { opacity: 0; transform: scale(0.4); }
+    to   { opacity: 0.7; transform: scale(1); }
+  }
   @keyframes heroIn   { to { opacity: 1; transform: none; } }
   @keyframes heroSway1 { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(5px, -4px) rotate(0.35deg); } }
   @keyframes heroSway2 { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(-4px, 5px) rotate(-0.4deg); } }
@@ -193,7 +192,14 @@
   .hero-line { stroke-dasharray: 100; stroke-dashoffset: 100; animation: heroDraw 2.4s ease-in-out forwards; }
   .hero-line--2 { animation-delay: 0.4s; }
   .hero-line--3 { animation-delay: 0.8s; }
-  .hero-ink { opacity: 0; animation: heroInk 1.2s ease-out 3.4s forwards; }
+  /* 交点の赤い丸はゆらぎに追従せず、場所として固定する */
+  .hero-ink {
+    opacity: 0;
+    transform-box: fill-box;
+    transform-origin: 50% 50%;
+    transform: scale(0.4);
+    animation: heroInkBleed 1.2s cubic-bezier(0.22, 0.9, 0.3, 1) 3.4s forwards;
+  }
 
   .hero-sway { transform-box: fill-box; transform-origin: 50% 50%; }
   .hero-sway--1 { animation: heroSway1 10s ease-in-out 3.4s infinite; }
@@ -207,8 +213,17 @@
   .hero-in--3 { animation-delay: 0.90s; }
   .hero-in--4 { animation-delay: 1.05s; }
   .hero-in--5 { animation-delay: 1.20s; }
-  /* 2行目は三本線が交わって赤がにじむタイミングに揃える */
-  .hero-in--ink { animation-delay: 3.40s; }
+
+  /* 見出しは opacity だけで隠し、場所は最初から確保する */
+  .hero-line-1,
+  .hero-line-2 {
+    opacity: 0;
+    transform: translateY(12px);
+    animation: heroIn 0.9s ease forwards;
+  }
+  .hero-line-1 { animation-delay: 0.60s; }
+  /* 2つ目は三本線が交わって赤がにじむタイミングに揃える */
+  .hero-line-2 { animation-delay: 3.40s; }
 
   /* フォーカスリング */
   :focus-visible { outline: 2px solid #C00000; outline-offset: 2px; border-radius: 2px; }
@@ -218,9 +233,11 @@
     html { scroll-behavior: auto; }
     .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
     .hero-line { animation: none !important; stroke-dashoffset: 0 !important; }
-    .hero-ink { animation: none !important; opacity: 0.7 !important; }
+    .hero-ink { animation: none !important; opacity: 0.7 !important; transform: none !important; }
     .hero-sway { animation: none !important; }
     .hero-in { animation: none !important; opacity: 1 !important; transform: none !important; }
+    .hero-line-1,
+    .hero-line-2 { animation: none !important; opacity: 1 !important; transform: none !important; }
   }
 </style>
 <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
@@ -280,6 +297,15 @@
         <filter id="inkBlur" x="-3%" y="-3%" width="106%" height="106%">
           <feGaussianBlur stdDeviation="0.3"/>
         </filter>
+        <radialGradient id="inkBleed">
+          <stop offset="0%"   stop-color="#C00000" stop-opacity="1"/>
+          <stop offset="34%"  stop-color="#C00000" stop-opacity="0.92"/>
+          <stop offset="62%"  stop-color="#C00000" stop-opacity="0.42"/>
+          <stop offset="100%" stop-color="#C00000" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="inkSoft" x="-60%" y="-60%" width="220%" height="220%">
+          <feGaussianBlur stdDeviation="1.5"/>
+        </filter>
       </defs>
 
       <g class="hero-sway hero-sway--1" filter="url(#inkBlur)">
@@ -290,13 +316,15 @@
       <g class="hero-sway hero-sway--2" filter="url(#inkBlur)">
         <path class="hero-line hero-line--2" pathLength="100" fill="none" stroke="#2B2B2B" stroke-opacity="0.6" stroke-width="1.5" stroke-linecap="round"
               d="M 1260 -40 C 1100 110 960 240 870 360 C 820 430 790 560 780 860"/>
-        <path class="hero-ink" fill="none" stroke="#C00000" stroke-width="2" stroke-linecap="round"
-              d="M 795 428 C 825 420 852 408 872 398"/>
       </g>
 
       <g class="hero-sway hero-sway--3" filter="url(#inkBlur)">
         <path class="hero-line hero-line--3" pathLength="100" fill="none" stroke="#2B2B2B" stroke-opacity="0.4" stroke-width="1.2" stroke-linecap="round"
               d="M 1260 820 C 1120 740 1010 630 930 520 C 870 440 820 400 740 400 C 620 400 520 300 420 230 C 330 170 220 120 60 90"/>
+      </g>
+
+      <g class="hero-ink" filter="url(#inkSoft)">
+        <circle cx="841" cy="415" r="17" fill="url(#inkBleed)"/>
       </g>
     </svg>
   </div>
@@ -306,9 +334,8 @@
 
     <p class="hero-in hero-in--2 mb-7 text-[0.84rem] tracking-[0.12em] text-sub md:text-[0.95rem]">親子・夫婦・兄弟で営む会社のために</p>
 
-    <h1 class="mb-10 text-[clamp(24px,3.2vw,40px)] font-bold leading-[1.75] tracking-[0.02em] text-ink max-[430px]:text-[22px]">
-      <span class="hero-in hero-in--3 inline-block">飲み込んだ言葉の分だけ、</span><span class="hero-in hero-in--3 inline-block">すれ違っていく。</span><br aria-hidden="true">
-      <span class="hero-in hero-in--ink inline-block">その線が、</span><span class="hero-in hero-in--ink inline-block">もう一度交わる場所をつくる。</span>
+    <h1 class="mb-10 text-[clamp(28px,4.2vw,52px)] font-semibold leading-[1.75] tracking-[0.08em] text-ink">
+      <span class="inline-block hero-line-1">すれ違う線に、</span><span class="inline-block hero-line-2">交わる場所を。</span>
     </h1>
 
     <p class="hero-in hero-in--4 reading mb-12 text-[0.95rem] text-ink md:text-[1rem]">家族経営が上手くいかない理由は、誰か一人の考え方ではなく、家族と会社のあいだにある「いつもの流れ」にあるのかもしれません。私たちは、その関係に働きかけるコーチです。</p>
@@ -396,7 +423,7 @@
     <div class="reveal mx-auto max-w-reading text-center">
       <p class="mb-12 text-[0.95rem] text-ink md:text-[1rem]">3人とも、それぞれの場所で精一杯やっている。<br>そして3人とも、相手が知らないことを1つずつ抱えている。</p>
 
-      <p class="mb-12 text-[1.3rem] font-bold leading-[1.9] tracking-[0.04em] text-accent md:text-[1.75rem]">それなのに、<span class="inline-block">話すほど遠くなっていく。</span></p>
+      <p class="mb-12 text-[1.3rem] font-bold leading-[1.9] tracking-[0.04em] text-accent md:text-[1.75rem]">それなのに、<span class="inline-block">少しずつすれ違っていく。</span></p>
 
       <p class="text-[0.95rem] text-sub md:text-[1rem]">あなたの会社にも、こんな月曜の朝はありませんか。</p>
     </div>
@@ -1199,6 +1226,19 @@
   /* --- 画面外ではヒーロー背景アニメを止める --- */
   var heroSection = document.getElementById('top');
   var heroLines = document.getElementById('heroLines');
+
+  /* --- \u30b9\u30de\u30db\u306f\u69cb\u56f3\u3092\u53f3\u5bc4\u305b\u306b\u3057\u3066\u4ea4\u70b9\u3092\u753b\u9762\u5185\u306b\u5165\u308c\u308b --- */
+  var heroSvg = heroLines.querySelector('svg');
+  var narrowScreen = window.matchMedia('(max-width: 767.98px)');
+  function syncHeroAlign() {
+    heroSvg.setAttribute('preserveAspectRatio', narrowScreen.matches ? 'xMaxYMid slice' : 'xMidYMid slice');
+  }
+  syncHeroAlign();
+  if (narrowScreen.addEventListener) {
+    narrowScreen.addEventListener('change', syncHeroAlign);
+  } else {
+    narrowScreen.addListener(syncHeroAlign);
+  }
 
   if ('IntersectionObserver' in window) {
     var heroObserver = new IntersectionObserver(function (entries) {
