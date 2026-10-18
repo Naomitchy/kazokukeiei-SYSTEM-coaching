@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>家族経営のためのシステムコーチング｜飲み込んだ言葉の分だけ、すれ違っていく。</title>
+<meta name="description" content="家族経営が上手くいかない理由は、誰か一人の考え方ではなく、家族と会社のあいだにある「いつもの流れ」にあるのかもしれません。私たちは、その関係に働きかけるコーチです。">
+
+<meta property="og:title" content="家族経営のためのシステムコーチング｜飲み込んだ言葉の分だけ、すれ違っていく。">
+<meta property="og:description" content="家族経営が上手くいかない理由は、誰か一人の考え方ではなく、家族と会社のあいだにある「いつもの流れ」にあるのかもしれません。私たちは、その関係に働きかけるコーチです。">
+<meta property="og:type" content="website">
+<!-- TODO: 公開後の正式URLを設定する -->
+<meta property="og:url" content="">
+<!-- TODO: OGP画像（1200x630）を用意して設定する -->
+<meta property="og:image" content="">
+<meta name="twitter:card" content="summary">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='10' fill='%236B6B6B'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Shippori+Mincho:wght@400;600;700&display=swap">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          base:       '#FFFFFF',
+          mist:       '#F5F5F4',
+          line:       '#E5E5E5',
+          ink:        '#2B2B2B',
+          sub:        '#6B6B6B',
+          accent:     '#C00000',
+          accentDark: '#9A0000',
+          strong:     '#4A4A4A',
+          deep:       '#2B2B2B'
+        },
+        fontFamily: {
+          serif: ['"Shippori Mincho"', '"Cormorant Garamond"', 'serif'],
+          en:    ['"Cormorant Garamond"', 'serif']
+        },
+        letterSpacing: {
+          label: '0.2em'
+        },
+        maxWidth: {
+          reading: '38em',
+          narrow:  '32em'
+        },
+        lineHeight: {
+          reading: '2'
+        },
+        borderRadius: {
+          DEFAULT: '2px'
+        }
+      }
+    }
+  };
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+
+  /* 数字は和文と高さが揃うよう Shippori Mincho を優先させる */
+  body {
+    font-family: "Shippori Mincho", "Cormorant Garamond", serif;
+    line-height: 2;
+    color: #2B2B2B;
+    background-color: #FFFFFF;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  [id] { scroll-margin-top: 80px; }
+  @media (min-width: 768px) { [id] { scroll-margin-top: 92px; } }
+
+  .label-en {
+    font-family: "Cormorant Garamond", serif;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-weight: 500;
+  }
+
+  /* セクション英字ラベルの左に置くアクセント線 */
+  .section-label { display: flex; align-items: center; gap: 0.75rem; }
+  .section-label::before {
+    content: "";
+    flex: none;
+    width: 24px;
+    height: 1px;
+    background-color: #C00000;
+  }
+  .on-deep .section-label::before { background-color: rgba(255, 255, 255, 0.7); }
+
+  .num-en {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    font-variant-numeric: lining-nums;
+    font-feature-settings: "lnum" 1;
+  }
+
+  /* 本文の読みやすさ（最大36〜40字） */
+  .reading { max-width: 38em; line-height: 2; }
+
+  /* 会話文 */
+  .dialogue {
+    padding-left: 1.5em;
+    margin-top: 2.2em;
+    margin-bottom: 2.2em;
+  }
+
+  /* 和文の中黒リスト */
+  .ja-bullet > li { position: relative; padding-left: 1.15em; }
+  .ja-bullet > li::before {
+    content: "・";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #6B6B6B;
+  }
+
+  /* 未記入プレースホルダー */
+  .placeholder {
+    display: inline-block;
+    border: 1px dotted #C4C4C4;
+    background-color: #FAFAFA;
+    color: #6B6B6B;
+    font-size: 0.85em;
+    letter-spacing: 0.04em;
+    line-height: 1.8;
+    padding: 0.15em 0.7em;
+    border-radius: 2px;
+  }
+
+  /* FAQ アコーディオン */
+  details > summary { list-style: none; cursor: pointer; }
+  details > summary::-webkit-details-marker { display: none; }
+  details[open] .faq-plus { display: none; }
+  details:not([open]) .faq-minus { display: none; }
+
+  /* スクロール演出 */
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.is-visible { opacity: 1; transform: none; }
+
+  /* ヒーロー背景の三本線 */
+  .hero-lines {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+    opacity: 0.35;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 24%, transparent 44%),
+                        radial-gradient(150% 80% at 100% 100%, #000 0%, #000 40%, transparent 82%);
+            mask-image: linear-gradient(to bottom, #000 0%, #000 24%, transparent 44%),
+                        radial-gradient(150% 80% at 100% 100%, #000 0%, #000 40%, transparent 82%);
+    -webkit-mask-composite: source-over;
+            mask-composite: add;
+  }
+  .hero-lines > svg { display: block; width: 100%; height: 100%; }
+
+  /* md 以上は右 60% だけに寄せ、左の見出し・本文・ボタンの下には出さない */
+  @media (min-width: 768px) {
+    .hero-lines {
+      left: 40%;
+      opacity: 0.6;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 78%, #000 96%);
+              mask-image: linear-gradient(to right, transparent 0%, transparent 78%, #000 96%);
+    }
+  }
+  @media (min-width: 1024px) {
+    .hero-lines {
+      opacity: 1;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 42%, #000 68%);
+              mask-image: linear-gradient(to right, transparent 0%, transparent 42%, #000 68%);
+    }
+  }
+
+  @keyframes heroDraw { to { stroke-dashoffset: 0; } }
+  @keyframes heroInk  { to { opacity: 0.7; } }
+  @keyframes heroIn   { to { opacity: 1; transform: none; } }
+  @keyframes heroSway1 { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(5px, -4px) rotate(0.35deg); } }
+  @keyframes heroSway2 { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(-4px, 5px) rotate(-0.4deg); } }
+  @keyframes heroSway3 { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(6px, 3px) rotate(0.3deg); } }
+
+  /* pathLength="100" に合わせた正規化ダッシュ */
+  .hero-line { stroke-dasharray: 100; stroke-dashoffset: 100; animation: heroDraw 2.4s ease-in-out forwards; }
+  .hero-line--2 { animation-delay: 0.4s; }
+  .hero-line--3 { animation-delay: 0.8s; }
+  .hero-ink { opacity: 0; animation: heroInk 1.2s ease-out 3.4s forwards; }
+
+  .hero-sway { transform-box: fill-box; transform-origin: 50% 50%; }
+  .hero-sway--1 { animation: heroSway1 10s ease-in-out 3.4s infinite; }
+  .hero-sway--2 { animation: heroSway2 12s ease-in-out 3.4s infinite; }
+  .hero-sway--3 { animation: heroSway3 14s ease-in-out 3.4s infinite; }
+  .hero-lines.is-paused .hero-sway { animation-play-state: paused; }
+
+  .hero-in { opacity: 0; transform: translateY(16px); animation: heroIn 0.8s ease forwards; }
+  .hero-in--1 { animation-delay: 0.60s; }
+  .hero-in--2 { animation-delay: 0.75s; }
+  .hero-in--3 { animation-delay: 0.90s; }
+  .hero-in--4 { animation-delay: 1.05s; }
+  .hero-in--5 { animation-delay: 1.20s; }
+  /* 2行目は三本線が交わって赤がにじむタイミングに揃える */
+  .hero-in--ink { animation-delay: 3.40s; }
+
+  /* フォーカスリング */
+  :focus-visible { outline: 2px solid #C00000; outline-offset: 2px; border-radius: 2px; }
+  .on-deep :focus-visible { outline-color: #FFFFFF; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .hero-line { animation: none !important; stroke-dashoffset: 0 !important; }
+    .hero-ink { animation: none !important; opacity: 0.7 !important; }
+    .hero-sway { animation: none !important; }
+    .hero-in { animation: none !important; opacity: 1 !important; transform: none !important; }
+  }
+</style>
+<noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
+</head>
+
+<body class="bg-base font-serif text-ink antialiased">
+
+<a href="#story" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:bg-base focus:px-4 focus:py-2 focus:text-sm focus:shadow-none">本文へスキップ</a>
+
+<!-- ============================= ヘッダー ============================= -->
+<header id="siteHeader" class="fixed inset-x-0 top-0 z-50 border-b border-transparent transition-colors duration-300">
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3.5 md:px-8 md:py-4">
+    <a href="#top" class="shrink-0 text-[0.82rem] leading-snug tracking-[0.06em] text-ink md:text-[0.95rem]">
+      家族経営のための<span class="whitespace-nowrap">システムコーチング</span>
+    </a>
+
+    <nav aria-label="メインメニュー" class="hidden items-center gap-6 lg:flex">
+      <a href="#story"   class="text-[0.85rem] tracking-[0.06em] text-sub transition-colors hover:text-ink">ある家族の話</a>
+      <a href="#about"   class="text-[0.85rem] tracking-[0.06em] text-sub transition-colors hover:text-ink">システムコーチングとは</a>
+      <a href="#change"  class="text-[0.85rem] tracking-[0.06em] text-sub transition-colors hover:text-ink">変わること</a>
+      <a href="#flow"    class="text-[0.85rem] tracking-[0.06em] text-sub transition-colors hover:text-ink">進め方</a>
+      <a href="#faq"     class="text-[0.85rem] tracking-[0.06em] text-sub transition-colors hover:text-ink">よくある質問</a>
+      <a href="#contact" class="rounded border border-accent bg-accent px-4 py-2 text-[0.85rem] tracking-[0.06em] text-base transition-colors hover:border-accentDark hover:bg-accentDark">相談してみる</a>
+    </nav>
+
+    <button id="navToggle" type="button" aria-expanded="false" aria-controls="mobileNav"
+            class="flex h-10 w-10 shrink-0 items-center justify-center rounded border border-line bg-base/80 lg:hidden">
+      <span class="sr-only nav-toggle-label">メニューを開く</span>
+      <span aria-hidden="true" class="flex w-5 flex-col gap-[5px]">
+        <span class="block h-px w-full bg-ink"></span>
+        <span class="block h-px w-full bg-ink"></span>
+        <span class="block h-px w-full bg-ink"></span>
+      </span>
+    </button>
+  </div>
+
+  <div id="mobileNav" class="hidden border-t border-line bg-base lg:hidden">
+    <nav aria-label="メインメニュー（モバイル）" class="mx-auto flex max-w-6xl flex-col px-5 py-2">
+      <a href="#story"   class="border-b border-line py-3.5 text-[0.95rem] tracking-[0.05em] text-ink">ある家族の話</a>
+      <a href="#about"   class="border-b border-line py-3.5 text-[0.95rem] tracking-[0.05em] text-ink">システムコーチングとは</a>
+      <a href="#change"  class="border-b border-line py-3.5 text-[0.95rem] tracking-[0.05em] text-ink">変わること</a>
+      <a href="#flow"    class="border-b border-line py-3.5 text-[0.95rem] tracking-[0.05em] text-ink">進め方</a>
+      <a href="#faq"     class="border-b border-line py-3.5 text-[0.95rem] tracking-[0.05em] text-ink">よくある質問</a>
+      <a href="#contact" class="my-4 rounded bg-accent px-4 py-3 text-center text-[0.95rem] tracking-[0.05em] text-base transition-colors hover:bg-accentDark">相談してみる</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ============================= ファーストビュー ============================= -->
+<section id="top" class="relative flex min-h-[88svh] items-center bg-base px-5 pb-20 pt-28 md:px-8 md:pb-28 md:pt-36">
+
+  <div id="heroLines" class="hero-lines" aria-hidden="true">
+    <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+      <defs>
+        <filter id="inkBlur" x="-3%" y="-3%" width="106%" height="106%">
+          <feGaussianBlur stdDeviation="0.3"/>
+        </filter>
+      </defs>
+
+      <g class="hero-sway hero-sway--1" filter="url(#inkBlur)">
+        <path class="hero-line hero-line--1" pathLength="100" fill="none" stroke="#2B2B2B" stroke-opacity="0.85" stroke-width="1.8" stroke-linecap="round"
+              d="M -60 700 C 180 700 360 600 540 520 C 700 450 800 420 900 400 C 1030 375 1150 340 1260 300"/>
+      </g>
+
+      <g class="hero-sway hero-sway--2" filter="url(#inkBlur)">
+        <path class="hero-line hero-line--2" pathLength="100" fill="none" stroke="#2B2B2B" stroke-opacity="0.6" stroke-width="1.5" stroke-linecap="round"
+              d="M 1260 -40 C 1100 110 960 240 870 360 C 820 430 790 560 780 860"/>
+        <path class="hero-ink" fill="none" stroke="#C00000" stroke-width="2" stroke-linecap="round"
+              d="M 795 428 C 825 420 852 408 872 398"/>
+      </g>
+
+      <g class="hero-sway hero-sway--3" filter="url(#inkBlur)">
+        <path class="hero-line hero-line--3" pathLength="100" fill="none" stroke="#2B2B2B" stroke-opacity="0.4" stroke-width="1.2" stroke-linecap="round"
+              d="M 1260 820 C 1120 740 1010 630 930 520 C 870 440 820 400 740 400 C 620 400 520 300 420 230 C 330 170 220 120 60 90"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="relative z-10 mx-auto w-full max-w-5xl">
+    <p class="hero-in hero-in--1 label-en section-label mb-7 text-[0.65rem] text-sub md:text-[0.72rem]">Systems Coaching for Family Business</p>
+
+    <p class="hero-in hero-in--2 mb-7 text-[0.84rem] tracking-[0.12em] text-sub md:text-[0.95rem]">親子・夫婦・兄弟で営む会社のために</p>
+
+    <h1 class="mb-10 text-[clamp(24px,3.2vw,40px)] font-bold leading-[1.75] tracking-[0.02em] text-ink max-[430px]:text-[22px]">
+      <span class="hero-in hero-in--3 inline-block">飲み込んだ言葉の分だけ、</span><span class="hero-in hero-in--3 inline-block">すれ違っていく。</span><br aria-hidden="true">
+      <span class="hero-in hero-in--ink inline-block">その線が、</span><span class="hero-in hero-in--ink inline-block">もう一度交わる場所をつくる。</span>
+    </h1>
+
+    <p class="hero-in hero-in--4 reading mb-12 text-[0.95rem] text-ink md:text-[1rem]">家族経営が上手くいかない理由は、誰か一人の考え方ではなく、家族と会社のあいだにある「いつもの流れ」にあるのかもしれません。私たちは、その関係に働きかけるコーチです。</p>
+
+    <div class="hero-in hero-in--5 flex flex-col gap-3 sm:flex-row sm:items-center">
+      <a href="#contact" class="rounded border border-accent bg-accent px-7 py-3.5 text-center text-[0.95rem] tracking-[0.08em] text-base transition-colors hover:border-accentDark hover:bg-accentDark">まずは話を聞いてみる</a>
+      <a href="#story"   class="rounded border border-accent px-7 py-3.5 text-center text-[0.95rem] tracking-[0.08em] text-accent transition-colors hover:bg-accent hover:text-base">ある家族の話を読む</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= STORY ============================= -->
+<section id="story" class="bg-mist px-5 py-20 md:px-8 md:py-28 lg:py-32">
+  <div class="mx-auto max-w-5xl">
+
+    <div class="reveal mb-14 md:mb-20">
+      <p class="label-en section-label mb-5 text-[0.68rem] text-sub">Story</p>
+      <h2 class="text-[1.35rem] font-bold leading-[1.8] tracking-[0.03em] text-ink md:text-[1.9rem]">月曜の朝、社長室で。</h2>
+    </div>
+
+    <div class="reveal reading mb-16 text-[0.95rem] text-ink md:mb-24 md:text-[1rem]">
+      <p class="mb-8">創業30年。67歳の父が始めたこの会社に、息子が戻って5年になる。41歳、肩書きは専務。<br>3年前からは、息子の妻も事務所で経理を手伝っている。</p>
+
+      <p class="mb-8">戻る前は、東京の大手メーカーで営業企画をしていた。受注から納品までの流れを数字で追い、どこで時間が溶けているかを見つけては直す、そういう仕事だった。</p>
+
+      <p class="dialogue text-[1.02rem] text-ink md:text-[1.1rem]">「新しい受注の仕組みを入れたい」</p>
+
+      <p class="mb-8">息子が資料を差し出すと、父は表紙だけ見て言った。</p>
+
+      <p class="dialogue text-[1.02rem] text-ink md:text-[1.1rem]">「まだ早い。今のやり方で困ってないだろう」</p>
+
+      <p>隣の席の妻は、帳簿から顔を上げなかった。</p>
+    </div>
+
+    <!-- THREE VIEWS -->
+    <div class="reveal mb-12 flex items-center gap-5 md:mb-16">
+      <span class="h-px flex-1 bg-line"></span>
+      <span class="label-en text-[0.68rem] text-sub">Three Views</span>
+      <span class="h-px flex-1 bg-line"></span>
+    </div>
+
+    <div class="mb-16 space-y-6 md:mb-24 md:space-y-8">
+
+      <article class="reveal border-l-2 border-ink bg-base p-6 md:flex md:gap-10 md:p-8 lg:gap-14 lg:p-10">
+        <div class="mb-5 shrink-0 md:mb-0 md:w-36 lg:w-44">
+          <p class="label-en mb-2 text-[0.62rem] text-sub">Son</p>
+          <h3 class="text-[1.05rem] font-bold tracking-[0.04em] text-ink">息子の目線</h3>
+        </div>
+        <div class="max-w-reading space-y-6 text-[0.9rem] leading-[2] text-ink md:text-[0.95rem]">
+          <p>また、表紙だけだった。<br>時間をかけて、取引先にも話を聞いて作った資料だった。中身さえ見てもらえれば、わかってもらえるはずなのに。</p>
+          <p>前の会社では、見積も、進捗も、誰がどこで止めているかも、画面を開けばわかった。だから手を打てた。<br>ここでは、その全部が父の頭の中にある。あの取引先には昔こういう経緯がある、あの材料はあそこから引いている。聞けば、きちんと答えが返ってくる。ただ、父に聞かないと誰も動けない。</p>
+          <p>決め方も同じだった。朝礼のあとの立ち話で決まり、紙には何も残らない。父が決められなくなった日に、この会社には何も残らない。<br>会社が傾けば、社員の家族も、自分の家族も行き場がなくなる。暮らしを守るには、まず経営が立っていなければならない。息子が焦っているのは、自分が認められないことではない。その日までに残された時間のほうだった。休みの日も工場に顔を出した。余裕は、とうになかった。</p>
+          <p>ただ、そのことを家で話したことは一度もない。家族のためにやっているのだから、言わなくてもわかるはずだった。伝わっていないことに苛立ちながら、伝える言葉は探さなかった。<br>帰りの車の中で、決めた。もう、いちいち相談するのはやめよう。進めてから報告すればいい。</p>
+        </div>
+      </article>
+
+      <article class="reveal border-l-4 border-sub bg-base p-6 md:flex md:gap-10 md:p-8 lg:gap-14 lg:p-10">
+        <div class="mb-5 shrink-0 md:mb-0 md:w-36 lg:w-44">
+          <p class="label-en mb-2 text-[0.62rem] text-sub">Father</p>
+          <h3 class="text-[1.05rem] font-bold tracking-[0.04em] text-ink">父の目線</h3>
+        </div>
+        <div class="max-w-reading space-y-6 text-[0.9rem] leading-[2] text-ink md:text-[0.95rem]">
+          <p>本当は、前の晩に資料を全部読んでいた。よくできていると思った。<br>ただ、最後のページの借入額を見て、手が止まった。</p>
+          <p>20年前、設備投資で失敗して、社員の給料を遅らせかけたことがある。あのときの社員の顔は、今も忘れられない。<br>そのことを、息子に話したことは一度もない。だから「まだ早い」としか言えなかった。</p>
+          <p>数日後、事務所で息子の嫁にだけ、ぽつりと聞いた。「あいつ、無理してないか」<br>最近、息子は何も言ってこない。これでは任せられるわけがない。</p>
+        </div>
+      </article>
+
+      <article class="reveal border-l-[6px] border-line bg-base p-6 md:flex md:gap-10 md:p-8 lg:gap-14 lg:p-10">
+        <div class="mb-5 shrink-0 md:mb-0 md:w-36 lg:w-44">
+          <p class="label-en mb-2 text-[0.62rem] text-sub">Wife</p>
+          <h3 class="text-[1.05rem] font-bold tracking-[0.04em] text-ink">妻の目線</h3>
+        </div>
+        <div class="max-w-reading space-y-6 text-[0.9rem] leading-[2] text-ink md:text-[0.95rem]">
+          <p>また始まった、と思った。<br>お義父さんと夫は、いつもこうだ。どうせ今回も平行線で終わる。帳簿から顔を上げなかったのは、見ても何も変わらないと知っているからだ。</p>
+          <p>朝は子どもを送り出し、昼は事務所で経理をして、夕方には迎えと夕飯の支度が待っている。二人の言い合いにまで付き合う余力は、正直もう残っていない。<br>「家業なんだから手伝って」と言われて始めた仕事だ。会社のことを決めるのは、あの二人でいい。私は頼まれたことをやるだけ。</p>
+          <p>数日後、お義父さんに「あいつ、無理してないか」と聞かれた。「さあ、どうでしょうね」と返して、そのまま忘れた。<br>夫が何をそんなに急いでいるのか、妻も聞いたことがなかった。</p>
+          <p>翌週、現場の主任に呼び止められた。<br>「専務の件、社長は聞いてないって……進めていいんでしょうか」<br>「確認しておきますね」と答えたが、その日も迎えの時間に追われて、誰にも確認しなかった。</p>
+          <p>その夜、子どもに「パパ、最近怒ってる？」と聞かれた。「おじいちゃんとケンカしてるだけだよ」と笑って流した。<br>家では、誰も仕事の話をしなくなっていた。それで楽になったと、妻は思っていた。</p>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="reveal mx-auto max-w-reading text-center">
+      <p class="mb-12 text-[0.95rem] text-ink md:text-[1rem]">3人とも、それぞれの場所で精一杯やっている。<br>そして3人とも、相手が知らないことを1つずつ抱えている。</p>
+
+      <p class="mb-12 text-[1.3rem] font-bold leading-[1.9] tracking-[0.04em] text-accent md:text-[1.75rem]">それなのに、<span class="inline-block">話すほど遠くなっていく。</span></p>
+
+      <p class="text-[0.95rem] text-sub md:text-[1rem]">あなたの会社にも、こんな月曜の朝はありませんか。</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================= PROBLEM ============================= -->
+<section id="problem" class="bg-base px-5 py-20 md:px-8 md:py-28 lg:py-32">
+  <div class="mx-auto max-w-5xl">
+
+    <div class="reveal mb-10 md:mb-14">
+      <p class="label-en section-label mb-5 text-[0.68rem] text-sub">Problem</p>
+      <h2 class="mb-8 text-[1.35rem] font-bold leading-[1.8] tracking-[0.03em] text-ink md:text-[1.9rem]">こんな場面、ありませんか。</h2>
+      <p class="reading text-[0.95rem] text-ink md:text-[1rem]">親子だから、つい言い過ぎる。兄弟だから、言わずに飲み込む。<br>夫婦だから、仕事の話がいつの間にか家の話になる。</p>
+    </div>
+
+    <div class="mb-16 grid gap-px overflow-hidden border border-line bg-line md:mb-20 md:grid-cols-2 lg:grid-cols-3">
+
+      <article class="reveal bg-base p-6 md:p-7">
+        <span aria-hidden="true" class="mb-4 block text-sub">
+          <svg viewBox="0 0 24 24" class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7.5" r="3.4"/><path d="M4.8 20.2c0-3.7 3.2-5.9 7.2-5.9s7.2 2.2 7.2 5.9"/></svg>
+        </span>
+        <h3 class="mb-4 text-[1rem] font-bold tracking-[0.04em] text-ink">先代・社長として</h3>
+        <ul class="ja-bullet space-y-2 text-[0.88rem] leading-[1.95] text-sub md:text-[0.92rem]">
+          <li>任せたいのに、心配でつい口を出してしまう</li>
+          <li>築いてきたものが引き継がれるか、不安がある</li>
+        </ul>
+      </article>
+
+      <article class="reveal bg-base p-6 md:p-7">
+        <span aria-hidden="true" class="mb-4 block text-sub">
+          <svg viewBox="0 0 24 24" class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 12h15"/><path d="M13.5 6.8 18.7 12l-5.2 5.2"/><path d="M3.5 5.2v13.6"/></svg>
+        </span>
+        <h3 class="mb-4 text-[1rem] font-bold tracking-[0.04em] text-ink">後継者として</h3>
+        <ul class="ja-bullet space-y-2 text-[0.88rem] leading-[1.95] text-sub md:text-[0.92rem]">
+          <li>方針の違いを伝えると、反抗のように受け取られる</li>
+          <li>報告するほど、任せてもらえなくなる気がする</li>
+        </ul>
+      </article>
+
+      <article class="reveal bg-base p-6 md:p-7">
+        <span aria-hidden="true" class="mb-4 block text-sub">
+          <svg viewBox="0 0 24 24" class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="5.3"/><circle cx="15" cy="12" r="5.3"/></svg>
+        </span>
+        <h3 class="mb-4 text-[1rem] font-bold tracking-[0.04em] text-ink">夫婦として</h3>
+        <ul class="ja-bullet space-y-2 text-[0.88rem] leading-[1.95] text-sub md:text-[0.92rem]">
+          <li>どちらかの声が大きく、もう一人の考えが判断に入りにくい</li>
+          <li>家庭の空気が、そのまま会社に持ち込まれる</li>
+        </ul>
+      </article>
+
+      <article class="reveal bg-base p-6 md:p-7">
+        <span aria-hidden="true" class="mb-4 block text-sub">
+          <svg viewBox="0 0 24 24" class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="6.6" cy="8.4" r="2.5"/><circle cx="17.4" cy="8.4" r="2.5"/><circle cx="12" cy="8.4" r="2.5"/><path d="M2.6 18.6c0-2.6 1.8-4.1 4-4.1"/><path d="M21.4 18.6c0-2.6-1.8-4.1-4-4.1"/><path d="M8 19.4c0-2.6 1.8-4.9 4-4.9s4 2.3 4 4.9"/></svg>
+        </span>
+        <h3 class="mb-4 text-[1rem] font-bold tracking-[0.04em] text-ink">社員から見て</h3>
+        <ul class="ja-bullet space-y-2 text-[0.88rem] leading-[1.95] text-sub md:text-[0.92rem]">
+          <li>社長と専務の指示が違い、どちらに従うか迷う</li>
+          <li>家族の顔色をうかがうことに疲れている</li>
+        </ul>
+      </article>
+
+      <article class="reveal bg-base p-6 md:p-7">
+        <span aria-hidden="true" class="mb-4 block text-sub">
+          <svg viewBox="0 0 24 24" class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.6 12 3.8l9 6.8"/><path d="M5.4 9.9V20.2h13.2V9.9"/><path d="M9.6 20.2v-5.1h4.8v5.1"/></svg>
+        </span>
+        <h3 class="mb-4 text-[1rem] font-bold tracking-[0.04em] text-ink">家族全体として</h3>
+        <ul class="ja-bullet space-y-2 text-[0.88rem] leading-[1.95] text-sub md:text-[0.92rem]">
+          <li>報酬・役職・承継の話を「いつか」と先送りしている</li>
+          <li>話し合うと、昔の話や感情的な話になってしまう</li>
+        </ul>
+      </article>
+
+      <article class="reveal bg-base p-6 md:p-7">
+        <span aria-hidden="true" class="mb-4 block text-sub">
+          <svg viewBox="0 0 24 24" class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3.8 3.8v16.4h16.4"/><path d="m7.2 15.6 3.6-4.1 3 2.5 4.6-5.8"/></svg>
+        </span>
+        <h3 class="mb-4 text-[1rem] font-bold tracking-[0.04em] text-ink">経営として</h3>
+        <ul class="ja-bullet space-y-2 text-[0.88rem] leading-[1.95] text-sub md:text-[0.92rem]">
+          <li>計画や制度は整えたのに、なぜか実行されない</li>
+          <li>決めたことが、しばらくすると元に戻る</li>
+        </ul>
+      </article>
+
+    </div>
+
+    <p class="reveal mx-auto max-w-reading text-center text-[1.15rem] font-bold leading-[1.95] tracking-[0.03em] text-ink md:text-[1.5rem]">
+      ひとつでも思い当たるなら、それは<br><strong class="font-bold text-accent underline decoration-accent/30 decoration-[3px] underline-offset-[10px]">誰か一人の性格の問題ではない</strong>かもしれません。
+    </p>
+
+  </div>
+</section>
+
+<!-- ============================= ABOUT ============================= -->
+<section id="about" class="bg-mist px-5 py-20 md:px-8 md:py-28 lg:py-32">
+  <div class="mx-auto max-w-5xl">
+
+    <blockquote class="reveal mx-auto mb-20 max-w-reading border-l-2 border-sub bg-base px-6 py-8 text-[0.92rem] leading-[2.05] text-ink md:mb-28 md:px-10 md:py-10 md:text-[0.98rem]">
+      <p>息子はそのとき初めて、父が前の晩に資料を全部読んでいたことを知った。<br>父は初めて、20年前のことを息子に話した。<br>そして妻は初めて、「疲れていて、見ないふりをしていた」と口にした。主任から聞いた話も、義父に聞かれたことも、そこで二人に伝わった。</p>
+      <p class="mt-6 text-sub">── あの家族に起きたのは、こういうことでした。</p>
+    </blockquote>
+
+    <div class="reveal mb-12 md:mb-16">
+      <p class="label-en section-label mb-5 text-[0.68rem] text-sub">About</p>
+      <h2 class="text-[1.35rem] font-bold leading-[1.8] tracking-[0.03em] text-ink md:text-[1.9rem]">システムコーチングとは</h2>
+    </div>
+
+    <div class="reveal reading mb-16 space-y-8 text-[0.95rem] text-ink md:mb-24 md:text-[1rem]">
+      <p class="text-[1.05rem] font-bold md:text-[1.2rem]">誰か一人を変えるための支援ではありません。</p>
+      <p>家族・経営者・社員のあいだで繰り返されている<strong class="font-bold">「お互いにそうなってしまう流れ」</strong>を一緒に見て、変えていく支援です。</p>
+      <p>どちらかを「頑固だ」「まだ未熟だ」と決めつけても、流れは止まりません。流れとして見ることで、報告の仕方や任せる範囲など、お互いに変えられるところが見えてきます。</p>
+      <p class="border-t border-line pt-8">目指すのは、仲のよい家族になることではなく<br><strong class="font-bold">家族としてのつながりと、会社としての意思決定を両立できる状態</strong>です。</p>
+    </div>
+
+    <!-- 循環図 -->
+    <figure class="reveal mx-auto max-w-3xl border border-line bg-base px-4 py-8 md:px-10 md:py-12">
+
+      <!-- モバイル用（縦型） -->
+      <svg class="block h-auto w-full md:hidden" viewBox="0 0 360 640" role="img"
+           aria-label="いつもの流れの循環図。1 父が心配して「まだ早い」と止める、2 息子が「信用されていない」と感じ、報告を減らす、3 妻は「また始まった」と距離を置き、聞いた話を誰にも伝えない、4 父は状況が見えず、さらに不安になる。そしてまた1に戻る。誰も悪くないのに、続いてしまう。">
+        <defs>
+          <marker id="arrowSm" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 Z" fill="#C00000"/>
+          </marker>
+        </defs>
+
+        <g fill="none" stroke="#C9C9C9" stroke-width="1.4">
+          <rect x="52" y="56"  width="296" height="78"  rx="2"/>
+          <rect x="52" y="164" width="296" height="100" rx="2"/>
+          <rect x="52" y="294" width="296" height="100" rx="2"/>
+          <rect x="52" y="424" width="296" height="78"  rx="2"/>
+        </g>
+
+        <g stroke="#C00000" stroke-width="1.4" fill="none" marker-end="url(#arrowSm)">
+          <path d="M200 136 L200 158"/>
+          <path d="M200 266 L200 288"/>
+          <path d="M200 396 L200 418"/>
+          <path d="M200 504 L200 528 Q200 544 184 544 L40 544 Q24 544 24 528 L24 46 Q24 30 40 30 L184 30 Q200 30 200 46 L200 50"/>
+        </g>
+
+        <g font-family="Shippori Mincho, serif" fill="#2B2B2B" font-size="14" text-anchor="middle">
+          <text x="200" y="102">父が心配して「まだ早い」と止める</text>
+          <text x="200" y="202">息子が「信用されていない」と感じ、</text>
+          <text x="200" y="230">報告を減らす</text>
+          <text x="200" y="332">妻は「また始まった」と距離を置き、</text>
+          <text x="200" y="360">聞いた話を誰にも伝えない</text>
+          <text x="200" y="470">父は状況が見えず、さらに不安になる</text>
+        </g>
+
+        <g font-family="Cormorant Garamond, serif" fill="#9A9A9A" font-size="15" text-anchor="start">
+          <text x="66" y="78">1</text>
+          <text x="66" y="186">2</text>
+          <text x="66" y="316">3</text>
+          <text x="66" y="446">4</text>
+        </g>
+
+        <g text-anchor="middle" font-family="Shippori Mincho, serif">
+          <text x="200" y="584" fill="#2B2B2B" font-size="16" font-weight="600">いつもの流れ</text>
+          <text x="200" y="610" fill="#6B6B6B" font-size="12.5">誰も悪くないのに、続いてしまう</text>
+        </g>
+      </svg>
+
+      <!-- タブレット・PC用（円環型） -->
+      <svg class="hidden h-auto w-full md:block" viewBox="0 0 900 600" role="img"
+           aria-label="いつもの流れの循環図。1 父が心配して「まだ早い」と止める、2 息子が「信用されていない」と感じ、報告を減らす、3 妻は「また始まった」と距離を置き、聞いた話を誰にも伝えない、4 父は状況が見えず、さらに不安になる。そしてまた1に戻る。誰も悪くないのに、続いてしまう。">
+        <defs>
+          <marker id="arrowLg" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 Z" fill="#C00000"/>
+          </marker>
+        </defs>
+
+        <circle cx="450" cy="300" r="215" fill="none" stroke="#EDEDED" stroke-width="1"/>
+
+        <g fill="none" stroke="#C9C9C9" stroke-width="1.4">
+          <rect x="310" y="10"  width="280" height="90" rx="2"/>
+          <rect x="610" y="255" width="280" height="90" rx="2"/>
+          <rect x="310" y="500" width="280" height="90" rx="2"/>
+          <rect x="10"  y="255" width="280" height="90" rx="2"/>
+        </g>
+
+        <g stroke="#C00000" stroke-width="1.6" fill="none" marker-end="url(#arrowLg)">
+          <path d="M557.5 113.8 A215 215 0 0 1 654.5 233.6"/>
+          <path d="M654.5 366.4 A215 215 0 0 1 557.5 486.2"/>
+          <path d="M342.5 486.2 A215 215 0 0 1 245.5 366.4"/>
+          <path d="M245.5 233.6 A215 215 0 0 1 342.5 113.8"/>
+        </g>
+
+        <g font-family="Shippori Mincho, serif" fill="#2B2B2B" font-size="17" text-anchor="middle">
+          <text x="450" y="52">父が心配して</text>
+          <text x="450" y="80">「まだ早い」と止める</text>
+
+          <text x="750" y="297">息子が「信用されていない」と</text>
+          <text x="750" y="325">感じ、報告を減らす</text>
+
+          <text x="450" y="542">妻は「また始まった」と距離を置き、</text>
+          <text x="450" y="570">聞いた話を誰にも伝えない</text>
+
+          <text x="150" y="297">父は状況が見えず、</text>
+          <text x="150" y="325">さらに不安になる</text>
+        </g>
+
+        <g font-family="Cormorant Garamond, serif" fill="#9A9A9A" font-size="17" text-anchor="start">
+          <text x="324" y="32">1</text>
+          <text x="624" y="277">2</text>
+          <text x="324" y="522">3</text>
+          <text x="24"  y="277">4</text>
+        </g>
+
+        <g text-anchor="middle" font-family="Shippori Mincho, serif">
+          <text x="450" y="292" fill="#2B2B2B" font-size="21" font-weight="600">いつもの流れ</text>
+          <text x="450" y="330" fill="#6B6B6B" font-size="15">誰も悪くないのに、</text>
+          <text x="450" y="356" fill="#6B6B6B" font-size="15">続いてしまう</text>
+        </g>
+      </svg>
+
+      <figcaption class="mt-8 text-center text-[0.78rem] tracking-[0.06em] text-sub">（図：いつもの流れ）</figcaption>
+    </figure>
+
+  </div>
+</section>
+
+<!-- ============================= SCOPE ============================= -->
+<section id="scope" class="bg-base px-5 py-20 md:px-8 md:py-28 lg:py-32">
+  <div class="mx-auto max-w-5xl">
+
+    <div class="reveal mb-10 md:mb-14">
+      <p class="label-en section-label mb-5 text-[0.68rem] text-sub">Scope</p>
+      <h2 class="mb-8 text-[1.35rem] font-bold leading-[1.8] tracking-[0.03em] text-ink md:text-[1.9rem]">システムコーチングが扱う領域</h2>
+      <p class="reading text-[0.95rem] text-ink md:text-[1rem]">会社の課題は、4つの領域にまたがり、互いに影響し合っています。</p>
+    </div>
+
+    <div class="reveal grid grid-cols-1 gap-4 md:grid-cols-[6.5rem_1fr_1fr] md:gap-0">
+
+      <div class="hidden md:block" aria-hidden="true"></div>
+      <div class="hidden items-end justify-center border-b border-line pb-3 md:flex">
+        <span class="text-[0.82rem] tracking-[0.14em] text-sub">組織</span>
+      </div>
+      <div class="hidden items-end justify-center border-b border-line pb-3 md:flex">
+        <span class="text-[0.82rem] tracking-[0.14em] text-sub">個人</span>
+      </div>
+
+      <div class="hidden items-center justify-end pr-4 md:flex">
+        <span class="text-[0.82rem] tracking-[0.1em] text-sub">論理（コト）</span>
+      </div>
+      <article class="border border-line p-6 md:m-2 md:p-7">
+        <h3 class="mb-4">
+          <span class="label-en block text-[0.6rem] text-sub">Logic</span>
+          <span class="mt-2 block text-[0.78rem] tracking-[0.06em] text-sub">組織×論理（コト）：</span>
+          <span class="mt-1 block text-[1.05rem] font-bold tracking-[0.04em] text-ink">戦略・仕組み・制度</span>
+        </h3>
+        <p class="text-[0.88rem] leading-[1.95] text-ink md:text-[0.92rem]">事業計画、承継計画、株式・相続・税務、人事制度</p>
+        <p class="mt-2 text-[0.82rem] leading-[1.9] text-sub">（税理士・弁護士・コンサルタント）</p>
+      </article>
+      <article class="border border-line p-6 md:m-2 md:p-7">
+        <h3 class="mb-4">
+          <span class="label-en block text-[0.6rem] text-sub">Logic</span>
+          <span class="mt-2 block text-[0.78rem] tracking-[0.06em] text-sub">個人×論理（コト）：</span>
+          <span class="mt-1 block text-[1.05rem] font-bold tracking-[0.04em] text-ink">知識・スキル・経験</span>
+        </h3>
+        <p class="text-[0.88rem] leading-[1.95] text-ink md:text-[0.92rem]">後継者の経営の学び、資格、現場での経験</p>
+        <p class="mt-2 text-[0.82rem] leading-[1.9] text-sub">（研修・セミナー・実務経験）</p>
+      </article>
+
+      <div class="hidden items-center justify-end pr-4 md:flex">
+        <span class="text-[0.82rem] tracking-[0.1em] text-sub">感情（ヒト）</span>
+      </div>
+      <article class="border-[1.5px] border-accent bg-base p-6 md:m-2 md:p-7">
+        <h3 class="mb-4">
+          <span class="label-en block text-[0.6rem] text-sub">Emotion</span>
+          <span class="mt-2 block text-[0.78rem] tracking-[0.06em] text-sub">組織×感情（ヒト）：</span>
+          <span class="mt-1 block text-[1.05rem] font-bold tracking-[0.04em] text-accent">関係性・風土</span>
+        </h3>
+        <p class="text-[0.88rem] leading-[1.95] text-ink md:text-[0.92rem]">親子・夫婦・社員のあいだの「いつもの流れ」</p>
+        <p class="mt-2 text-[0.82rem] leading-[1.9] text-sub">（システムコーチング）</p>
+      </article>
+      <article class="border border-line p-6 md:m-2 md:p-7">
+        <h3 class="mb-4">
+          <span class="label-en block text-[0.6rem] text-sub">Emotion</span>
+          <span class="mt-2 block text-[0.78rem] tracking-[0.06em] text-sub">個人×感情（ヒト）：</span>
+          <span class="mt-1 block text-[1.05rem] font-bold tracking-[0.04em] text-ink">気持ち・やる気</span>
+        </h3>
+        <p class="text-[0.88rem] leading-[1.95] text-ink md:text-[0.92rem]">先代の不安、後継者の迷い、一人ひとりの思い</p>
+        <p class="mt-2 text-[0.82rem] leading-[1.9] text-sub">（個人コーチング・カウンセリング）</p>
+      </article>
+
+    </div>
+
+    <p class="reveal mt-10 text-center text-[0.9rem] tracking-[0.06em] text-ink md:text-[0.95rem]">↻ 4つはつながり、互いに影響し合う</p>
+    <p class="reveal mt-3 text-center text-[0.75rem] leading-[1.9] text-sub">※ ケン・ウィルバーの「四つの象限」（インテグラル理論）をもとに作成</p>
+
+    <div class="reveal reading mt-16 space-y-8 text-[0.95rem] text-ink md:mt-20 md:text-[1rem]">
+      <p>承継計画や制度を整えても、関係がそのままだと実行されず、元に戻りやすくなります。</p>
+      <p>一方で、システムコーチングを入れれば、全部がうまくいくわけではありません。</p>
+      <p class="border-l-2 border-line pl-5">私たちが扱うのは「関係性・風土」の領域です。<br>ほかの領域は、税理士・弁護士などの専門家や、研修・個人支援と連携して進めます。</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================= CHANGE ============================= -->
+<section id="change" class="bg-mist px-5 py-20 md:px-8 md:py-28 lg:py-32">
+  <div class="mx-auto max-w-5xl">
+
+    <div class="reveal mb-14 md:mb-20">
+      <p class="label-en section-label mb-5 text-[0.68rem] text-sub">Change</p>
+      <h2 class="text-[1.35rem] font-bold leading-[1.8] tracking-[0.03em] text-ink md:text-[1.9rem]">半年後の月曜の朝、社長室で。</h2>
+    </div>
+
+    <div class="reveal reading mb-16 text-[0.95rem] text-ink md:mb-24 md:text-[1rem]">
+      <p class="mb-8">息子は、資料の最初のページに「まず1つの部署で、3か月だけ試します」と書いてきた。</p>
+
+      <p class="mb-2">説明を終えたあと、息子は一度だけ言い足した。</p>
+      <p class="dialogue mt-4 text-[1.02rem] md:text-[1.1rem]">「急いでいたのは、この会社と、家族の暮らしを、どちらも守りたいからです」</p>
+
+      <p class="mb-2">父は最後のページまでめくってから言った。</p>
+      <p class="dialogue mt-4 text-[1.02rem] md:text-[1.1rem]">「借入の額だけは、一緒に決めさせてくれ」</p>
+
+      <p class="mb-2">妻が帳簿から顔を上げた。</p>
+      <p class="dialogue mt-4 text-[1.02rem] md:text-[1.1rem]">「数字のことは私も入れてください。その代わり、夕方の迎えの日は、会議を早めに切り上げてもらえますか」</p>
+
+      <p class="mb-8">二人は顔を見合わせてから、うなずいた。</p>
+
+      <p>何かが劇的に変わったわけではない。意見が分かれることも、今もある。</p>
+    </div>
+
+    <p class="reveal mx-auto mb-20 max-w-reading border-y border-line py-10 text-center text-[1.2rem] font-bold leading-[1.95] tracking-[0.04em] text-accent md:mb-28 md:text-[1.6rem]">
+      ただ、この家族は、<span class="inline-block">話すことをやめなくなった。</span>
+    </p>
+
+    <div class="reveal mb-12 md:mb-16">
+      <h3 class="mb-8 text-[1.2rem] font-bold leading-[1.8] tracking-[0.03em] text-ink md:text-[1.5rem]">受けた後に、何が変わるのか</h3>
+      <p class="reading text-[0.95rem] text-ink md:text-[1rem]">相手を変えるのではなく、話し方と決め方が変わります。</p>
+    </div>
+
+    <div class="grid gap-5 md:grid-cols-2 md:gap-6">
+
+      <article class="reveal flex gap-5 border border-line bg-base p-6 md:gap-6 md:p-8">
+        <span aria-hidden="true" class="num-en shrink-0 text-[2.4rem] leading-none text-strong md:text-[3rem]">1</span>
+        <div>
+          <h4 class="mb-4 text-[1rem] font-bold leading-[1.8] tracking-[0.03em] text-ink md:text-[1.08rem]">言えなかったことを、会社の課題として話せる</h4>
+          <p class="text-[0.88rem] leading-[1.95] text-sub md:text-[0.92rem]">先代への敬意を保ったまま、方針の違いを伝えられる。任せる不安も言葉にできる。報酬・役職・承継も議題にできる。</p>
+        </div>
+      </article>
+
+      <article class="reveal flex gap-5 border border-line bg-base p-6 md:gap-6 md:p-8">
+        <span aria-hidden="true" class="num-en shrink-0 text-[2.4rem] leading-none text-strong md:text-[3rem]">2</span>
+        <div>
+          <h4 class="mb-4 text-[1rem] font-bold leading-[1.8] tracking-[0.03em] text-ink md:text-[1.08rem]">「親子の会話」と「経営の議論」を分けられる</h4>
+          <p class="text-[0.88rem] leading-[1.95] text-sub md:text-[0.92rem]">今は誰が、どの立場で、何を決める場なのかがはっきりし、二重の指示や責任のあいまいさが減る。</p>
+        </div>
+      </article>
+
+      <article class="reveal flex gap-5 border border-line bg-base p-6 md:gap-6 md:p-8">
+        <span aria-hidden="true" class="num-en shrink-0 text-[2.4rem] leading-none text-strong md:text-[3rem]">3</span>
+        <div>
+          <h4 class="mb-4 text-[1rem] font-bold leading-[1.8] tracking-[0.03em] text-ink md:text-[1.08rem]">意見がぶつかっても、関係を壊さずに話し合える</h4>
+          <p class="text-[0.88rem] leading-[1.95] text-sub md:text-[0.92rem]">「守りたい」と「変えたい」の両方にある理由を並べ、大切なものを残しながら小さく試す道が見えてくる。</p>
+        </div>
+      </article>
+
+      <article class="reveal flex gap-5 border border-line bg-base p-6 md:gap-6 md:p-8">
+        <span aria-hidden="true" class="num-en shrink-0 text-[2.4rem] leading-none text-strong md:text-[3rem]">4</span>
+        <div>
+          <h4 class="mb-4 text-[1rem] font-bold leading-[1.8] tracking-[0.03em] text-ink md:text-[1.08rem]">社員が、家族の顔色ではなく仕事に集中できる</h4>
+          <p class="text-[0.88rem] leading-[1.95] text-sub md:text-[0.92rem]">指示の出どころと説明が一貫し、現場の迷いや調整の手間が減る。社員も意見を言いやすくなる。</p>
+        </div>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================= FOR EVERYONE ============================= -->
+<section id="for-everyone" class="bg-base px-5 py-20 md:px-8 md:py-28 lg:py-32">
+  <div class="mx-auto max-w-5xl">
+
+    <div class="reveal mb-10 md:mb-14">
+      <p class="label-en section-label mb-5 text-[0.68rem] text-sub">For Everyone</p>
+      <h2 class="text-[1.35rem] font-bold leading-[1.8] tracking-[0.03em] text-ink md:text-[1.9rem]">それぞれにとっての変化</h2>
+    </div>
+
+    <ul class="border-t border-line">
+
+      <li class="reveal flex flex-col gap-3 border-b border-line py-7 md:flex-row md:items-baseline md:gap-8">
+        <div class="flex shrink-0 items-center gap-3 md:w-56">
+          <span aria-hidden="true" class="text-sub">
+            <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7.5" r="3.4"/><path d="M4.8 20.2c0-3.7 3.2-5.9 7.2-5.9s7.2 2.2 7.2 5.9"/></svg>
+          </span>
+          <h3 class="text-[1rem] font-bold tracking-[0.05em] text-ink">先代にとって</h3>
+        </div>
+        <p class="text-[0.92rem] leading-[1.95] text-ink md:text-[0.95rem]">安心して任せられ、自分が築いたものが次の世代につながる。</p>
+      </li>
+
+      <li class="reveal flex flex-col gap-3 border-b border-line py-7 md:flex-row md:items-baseline md:gap-8">
+        <div class="flex shrink-0 items-center gap-3 md:w-56">
+          <span aria-hidden="true" class="text-sub">
+            <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 12h15"/><path d="M13.5 6.8 18.7 12l-5.2 5.2"/><path d="M3.5 5.2v13.6"/></svg>
+          </span>
+          <h3 class="text-[1rem] font-bold tracking-[0.05em] text-ink">後継者にとって</h3>
+        </div>
+        <p class="text-[0.92rem] leading-[1.95] text-ink md:text-[0.95rem]">信頼されて任され、自分の考えで会社を動かせる。</p>
+      </li>
+
+      <li class="reveal flex flex-col gap-3 border-b border-line py-7 md:flex-row md:items-baseline md:gap-8">
+        <div class="flex shrink-0 items-center gap-3 md:w-56">
+          <span aria-hidden="true" class="text-sub">
+            <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.6" cy="10.4" r="4.6"/><circle cx="15.4" cy="10.4" r="4.6"/><path d="M12 15v5.4"/></svg>
+          </span>
+          <h3 class="text-[1rem] font-bold tracking-[0.05em] text-ink">配偶者・家族にとって</h3>
+        </div>
+        <p class="text-[0.92rem] leading-[1.95] text-ink md:text-[0.95rem]">どちらかの味方をしなくていい。自分の立場から、話し合いに加われる。</p>
+      </li>
+
+      <li class="reveal flex flex-col gap-3 border-b border-line py-7 md:flex-row md:items-baseline md:gap-8">
+        <div class="flex shrink-0 items-center gap-3 md:w-56">
+          <span aria-hidden="true" class="text-sub">
+            <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="6.6" cy="8.4" r="2.5"/><circle cx="17.4" cy="8.4" r="2.5"/><circle cx="12" cy="8.4" r="2.5"/><path d="M2.6 18.6c0-2.6 1.8-4.1 4-4.1"/><path d="M21.4 18.6c0-2.6-1.8-4.1-4-4.1"/><path d="M8 19.4c0-2.6 1.8-4.9 4-4.9s4 2.3 4 4.9"/></svg>
+          </span>
+          <h3 class="text-[1rem] font-bold tracking-[0.05em] text-ink">社員にとって</h3>
+        </div>
+        <p class="text-[0.92rem] leading-[1.95] text-ink md:text-[0.95rem]">迷わずに働け、自分の声が届く職場になる。</p>
+      </li>
+
+    </ul>
+
+  </div>
+</section>
+
+<!-- ============================= FLOW ============================= -->
+<section id="flow" class="bg-mist px-5 py-20 md:px-8 md:py-28 lg:py-32">
+  <div class="mx-auto max-w-5xl">
+
+    <div class="reveal mb-12 md:mb-16">
+      <p class="label-en section-label mb-5 text-[0.68rem] text-sub">Flow</p>
+      <h2 class="mb-8 text-[1.35rem] font-bold leading-[1.8] tracking-[0.03em] text-ink md:text-[1.9rem]">進め方</h2>
+      <p class="reading text-[0.95rem] text-ink md:text-[1rem]">全体でおよそ2〜3か月。皆さんの日々の仕事に合わせて進めます。</p>
+    </div>
+
+    <ol class="mb-20 grid gap-y-9 md:grid-cols-2 md:gap-x-10 lg:grid-cols-4 lg:gap-x-0 lg:gap-y-0">
+
+      <li class="reveal relative border-l border-line pl-6 lg:border-l-0 lg:border-t lg:pl-0 lg:pr-7 lg:pt-9">
+        <span aria-hidden="true" class="absolute left-0 top-3 h-[7px] w-[7px] -translate-x-1/2 rounded-full bg-strong lg:top-0 lg:-translate-y-1/2 lg:translate-x-0"></span>
+        <p class="num-en mb-1 text-[1.6rem] leading-none text-strong">1</p>
+        <h3 class="mb-1 text-[1rem] font-bold leading-[1.8] tracking-[0.04em] text-ink">個別のお話し合い</h3>
+        <p class="mb-3 text-[0.8rem] tracking-[0.06em] text-sub">（2〜3週間）</p>
+        <p class="text-[0.88rem] leading-[1.95] text-ink md:text-[0.9rem]">お一人ずつ、今の関係をどう感じているかを伺います。内容は匿名で扱います。</p>
+      </li>
+
+      <li class="reveal relative border-l border-line pl-6 lg:border-l-0 lg:border-t lg:pl-0 lg:pr-7 lg:pt-9">
+        <span aria-hidden="true" class="absolute left-0 top-3 h-[7px] w-[7px] -translate-x-1/2 rounded-full bg-strong lg:top-0 lg:-translate-y-1/2 lg:translate-x-0"></span>
+        <p class="num-en mb-1 text-[1.6rem] leading-none text-strong">2</p>
+        <h3 class="mb-1 text-[1rem] font-bold leading-[1.8] tracking-[0.04em] text-ink">見立てのご共有</h3>
+        <p class="mb-3 text-[0.8rem] tracking-[0.06em] text-sub">（1〜2週間）</p>
+        <p class="text-[0.88rem] leading-[1.95] text-ink md:text-[0.9rem]">何が起きているかの仮説をまとめ、社長と一緒に扱うテーマを決めます。</p>
+      </li>
+
+      <li class="reveal relative border-l border-line pl-6 lg:border-l-0 lg:border-t lg:pl-0 lg:pr-7 lg:pt-9">
+        <span aria-hidden="true" class="absolute left-0 top-3 h-[7px] w-[7px] -translate-x-1/2 rounded-full bg-strong lg:top-0 lg:-translate-y-1/2 lg:translate-x-0"></span>
+        <p class="num-en mb-1 text-[1.6rem] leading-none text-strong">3</p>
+        <h3 class="mb-1 text-[1rem] font-bold leading-[1.8] tracking-[0.04em] text-ink">セッション</h3>
+        <p class="mb-3 text-[0.8rem] tracking-[0.06em] text-sub">（2時間×3回）</p>
+        <p class="text-[0.88rem] leading-[1.95] text-ink md:text-[0.9rem]">皆さんがそろう場を、コーチ2名で進めます。</p>
+      </li>
+
+      <li class="reveal relative border-l border-line pl-6 lg:border-l-0 lg:border-t lg:pl-0 lg:pr-0 lg:pt-9">
+        <span aria-hidden="true" class="absolute left-0 top-3 h-[7px] w-[7px] -translate-x-1/2 rounded-full bg-strong lg:top-0 lg:-translate-y-1/2 lg:translate-x-0"></span>
+        <p class="num-en mb-1 text-[1.6rem] leading-none text-strong">4</p>
+        <h3 class="mb-1 text-[1rem] font-bold leading-[1.8] tracking-[0.04em] text-ink">振り返り</h3>
+        <p class="mb-3 text-[0.8rem] tracking-[0.06em] text-sub">（終了から2〜4週間後）</p>
+        <p class="text-[0.88rem] leading-[1.95] text-ink md:text-[0.9rem]">変化を確かめ、取り決めを見直します。</p>
+      </li>
+
+    </ol>
+
+    <div class="reveal border border-line bg-base p-7 md:p-10">
+      <h3 class="mb-4 text-[1.05rem] font-bold leading-[1.85] tracking-[0.03em] text-ink md:text-[1.2rem]">気づきで終わらせず、日々の取り決めにします。</h3>
+      <p class="mb-7 text-[0.92rem] leading-[1.95] text-sub md:text-[0.95rem]">セッションの中で、たとえば次のようなことを合意します。</p>
+      <ul class="flex flex-wrap gap-2.5">
+        <li class="rounded border border-line px-4 py-2 text-[0.85rem] leading-[1.7] tracking-[0.03em] text-ink md:text-[0.9rem]">後継者が一人で決めてよい範囲</li>
+        <li class="rounded border border-line px-4 py-2 text-[0.85rem] leading-[1.7] tracking-[0.03em] text-ink md:text-[0.9rem]">先代への報告の頻度と、相談が必要な条件</li>
+        <li class="rounded border border-line px-4 py-2 text-[0.85rem] leading-[1.7] tracking-[0.03em] text-ink md:text-[0.9rem]">家族の話と経営の話を分ける会議の持ち方</li>
+        <li class="rounded border border-line px-4 py-2 text-[0.85rem] leading-[1.7] tracking-[0.03em] text-ink md:text-[0.9rem]">意見が分かれたときの決め方</li>
+        <li class="rounded border border-line px-4 py-2 text-[0.85rem] leading-[1.7] tracking-[0.03em] text-ink md:text-[0.9rem]">取り決めを見直す時期</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================= CHECK ============================= -->
+<section id="check" class="on-deep bg-deep px-5 py-20 text-base md:px-8 md:py-28 lg:py-32">
+  <div class="mx-auto max-w-5xl">
+
+    <div class="reveal mb-12 md:mb-16">
+      <p class="label-en section-label mb-5 text-[0.68rem] text-base/70">Check</p>
+      <h2 class="mb-8 text-[1.35rem] font-bold leading-[1.8] tracking-[0.03em] text-base md:text-[1.9rem]">変化の確かめ方</h2>
+      <p class="reading text-[0.95rem] leading-[2] text-base/80 md:text-[1rem]">「雰囲気がよくなった」で終わらせないために、始める前と終わった後に、同じ3つの質問をお聞きします。</p>
+    </div>
+
+    <div class="grid gap-8 md:grid-cols-3 md:gap-10">
+
+      <div class="reveal border-t border-base/25 pt-7">
+        <p aria-hidden="true" class="num-en mb-4 text-[2.6rem] leading-none text-base/50">Q1</p>
+        <h3 class="text-[1rem] font-bold leading-[1.9] tracking-[0.04em] text-base md:text-[1.08rem]"><span class="sr-only">Q1　</span>言いにくいことを、言えていますか</h3>
+      </div>
+
+      <div class="reveal border-t border-base/25 pt-7">
+        <p aria-hidden="true" class="num-en mb-4 text-[2.6rem] leading-none text-base/50">Q2</p>
+        <h3 class="text-[1rem] font-bold leading-[1.9] tracking-[0.04em] text-base md:text-[1.08rem]"><span class="sr-only">Q2　</span>誰が何を決めるのかが、はっきりしていますか</h3>
+      </div>
+
+      <div class="reveal border-t border-base/25 pt-7">
+        <p aria-hidden="true" class="num-en mb-4 text-[2.6rem] leading-none text-base/50">Q3</p>
+        <h3 class="text-[1rem] font-bold leading-[1.9] tracking-[0.04em] text-base md:text-[1.08rem]"><span class="sr-only">Q3　</span>決めたことが、実際に進んでいますか</h3>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================= ABOUT US ============================= -->
+<section id="about-us" class="bg-base px-5 py-20 md:px-8 md:py-28 lg:py-32">
+  <div class="mx-auto max-w-5xl">
+
+    <div class="reveal mb-12 md:mb-16">
+      <p class="label-en section-label mb-5 text-[0.68rem] text-sub">About Us</p>
+      <h2 class="text-[1.35rem] font-bold leading-[1.8] tracking-[0.03em] text-ink md:text-[1.9rem]">私たちについて</h2>
+    </div>
+
+    <div class="mb-16 grid gap-6 md:mb-20 md:grid-cols-2 md:gap-8">
+
+      <article class="reveal border border-line p-7 md:p-9">
+        <span aria-hidden="true" class="num-en mb-6 flex h-[5.5rem] w-[5.5rem] items-center justify-center rounded-full border border-strong text-[1.5rem] tracking-[0.06em] text-strong">S.O.</span>
+        <h3 class="mb-1 text-[1.1rem] font-bold tracking-[0.05em] text-ink">小笠原 咲絵</h3>
+        <p class="label-en mb-6 text-[0.72rem] text-sub">Sakie Ogasawara</p>
+        <ul class="ja-bullet space-y-3 text-[0.88rem] leading-[1.95] text-ink md:text-[0.92rem]">
+          <li>青森を拠点に、中小企業の採用支援・研修設計に従事</li>
+          <li><span class="placeholder">【未記入】</span></li>
+          <li><span class="placeholder">【未記入】</span></li>
+        </ul>
+      </article>
+
+      <article class="reveal border border-line p-7 md:p-9">
+        <span aria-hidden="true" class="num-en mb-6 flex h-[5.5rem] w-[5.5rem] items-center justify-center rounded-full border border-strong text-[1.5rem] tracking-[0.06em] text-strong">N.H.</span>
+        <h3 class="mb-1 text-[1.1rem] font-bold tracking-[0.05em] text-ink">星野 直道</h3>
+        <p class="label-en mb-6 text-[0.72rem] text-sub">Naomichi Hoshino</p>
+        <ul class="ja-bullet space-y-3 text-[0.88rem] leading-[1.95] text-ink md:text-[0.92rem]">
+          <li><span class="placeholder">【未記入】</span></li>
+          <li><span class="placeholder">【未記入】</span></li>
+          <li><span class="placeholder">【未記入】</span></li>
+        </ul>
+      </article>
+
+    </div>
+
+    <p class="reveal mx-auto max-w-reading text-center text-[1.05rem] leading-[2] tracking-[0.03em] text-ink md:text-[1.25rem]">
+      地域を支える経営者が、関係を整えることで、<br>もっと力を発揮できるように。
+    </p>
+
+  </div>
+</section>
+
+<!-- ============================= FAQ ============================= -->
+<section id="faq" class="bg-mist px-5 py-20 md:px-8 md:py-28 lg:py-32">
+  <div class="mx-auto max-w-3xl">
+
+    <div class="reveal mb-10 md:mb-14">
+      <p class="label-en section-label mb-5 text-[0.68rem] text-sub">FAQ</p>
+      <h2 class="text-[1.35rem] font-bold leading-[1.8] tracking-[0.03em] text-ink md:text-[1.9rem]">よくあるご質問</h2>
+    </div>
+
+    <div class="reveal border-t border-line">
+
+      <details open class="border-b border-line">
+        <summary class="flex items-start justify-between gap-5 py-6">
+          <h3 class="text-[0.95rem] font-bold leading-[1.9] tracking-[0.03em] text-ink md:text-[1.02rem]">Q. 家の中のことを、外の人に話すのは抵抗があります。</h3>
+          <span aria-hidden="true" class="num-en mt-0.5 shrink-0 text-[1.3rem] leading-none text-strong">
+            <span class="faq-plus">＋</span><span class="faq-minus">−</span>
+          </span>
+        </summary>
+        <p class="pb-7 pr-10 text-[0.9rem] leading-[2] text-sub md:text-[0.95rem]">A. 伺った内容は匿名でまとめます。誰がどう話したかがわかる形で、ほかの方にお伝えすることはありません。</p>
+      </details>
+
+      <details class="border-b border-line">
+        <summary class="flex items-start justify-between gap-5 py-6">
+          <h3 class="text-[0.95rem] font-bold leading-[1.9] tracking-[0.03em] text-ink md:text-[1.02rem]">Q. 揉めごとが表に出て、かえって関係が悪くなりませんか。</h3>
+          <span aria-hidden="true" class="num-en mt-0.5 shrink-0 text-[1.3rem] leading-none text-strong">
+            <span class="faq-plus">＋</span><span class="faq-minus">−</span>
+          </span>
+        </summary>
+        <p class="pb-7 pr-10 text-[0.9rem] leading-[2] text-sub md:text-[0.95rem]">A. 今まで言葉にならなかった思いが見えてくることはあります。コーチ2名が場を支え、出てきたものをどう扱うかまで含めて進め方を考えます。安心して話せる場づくりを何より大切にしています。</p>
+      </details>
+
+      <details class="border-b border-line">
+        <summary class="flex items-start justify-between gap-5 py-6">
+          <h3 class="text-[0.95rem] font-bold leading-[1.9] tracking-[0.03em] text-ink md:text-[1.02rem]">Q. 事業承継や相続の問題も解決できますか。</h3>
+          <span aria-hidden="true" class="num-en mt-0.5 shrink-0 text-[1.3rem] leading-none text-strong">
+            <span class="faq-plus">＋</span><span class="faq-minus">−</span>
+          </span>
+        </summary>
+        <p class="pb-7 pr-10 text-[0.9rem] leading-[2] text-sub md:text-[0.95rem]">A. システムコーチングが扱うのは、話し合いと関係の部分です。株式・相続・税務などの仕組みづくりが必要な場合は、税理士や弁護士などの専門家と連携して進めます。</p>
+      </details>
+
+      <details class="border-b border-line">
+        <summary class="flex items-start justify-between gap-5 py-6">
+          <h3 class="text-[0.95rem] font-bold leading-[1.9] tracking-[0.03em] text-ink md:text-[1.02rem]">Q. 売上は上がりますか。</h3>
+          <span aria-hidden="true" class="num-en mt-0.5 shrink-0 text-[1.3rem] leading-none text-strong">
+            <span class="faq-plus">＋</span><span class="faq-minus">−</span>
+          </span>
+        </summary>
+        <p class="pb-7 pr-10 text-[0.9rem] leading-[2] text-sub md:text-[0.95rem]">A. 売上の向上をお約束するものではありません。判断が早くなる、先送りが減る、社員が動きやすくなるなど、経営の土台が変わることを目指します。</p>
+      </details>
+
+      <details class="border-b border-line">
+        <summary class="flex items-start justify-between gap-5 py-6">
+          <h3 class="text-[0.95rem] font-bold leading-[1.9] tracking-[0.03em] text-ink md:text-[1.02rem]">Q. 家族全員がそろわないと、始められませんか。</h3>
+          <span aria-hidden="true" class="num-en mt-0.5 shrink-0 text-[1.3rem] leading-none text-strong">
+            <span class="faq-plus">＋</span><span class="faq-minus">−</span>
+          </span>
+        </summary>
+        <p class="pb-7 pr-10 text-[0.9rem] leading-[2] text-sub md:text-[0.95rem]">A. 最初は社長お一人とのお話から始められます。誰に参加してもらうかは、個別のお話し合いを通じて一緒に決めていきます。</p>
+      </details>
+
+      <details class="border-b border-line">
+        <summary class="flex items-start justify-between gap-5 py-6">
+          <h3 class="text-[0.95rem] font-bold leading-[1.9] tracking-[0.03em] text-ink md:text-[1.02rem]">Q. 費用はどのくらいかかりますか。</h3>
+          <span aria-hidden="true" class="num-en mt-0.5 shrink-0 text-[1.3rem] leading-none text-strong">
+            <span class="faq-plus">＋</span><span class="faq-minus">−</span>
+          </span>
+        </summary>
+        <p class="pb-7 pr-10 text-[0.9rem] leading-[2] text-sub md:text-[0.95rem]">A. 人数や回数によって変わります。</p>
+      </details>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================= CONTACT ============================= -->
+<section id="contact" class="bg-base px-5 py-20 md:px-8 md:py-28 lg:py-32">
+  <div class="mx-auto max-w-3xl">
+
+    <div class="reveal mb-16 text-center md:mb-20">
+      <p class="mb-10 text-[1.1rem] font-bold leading-[2] tracking-[0.04em] text-ink md:text-[1.45rem]">
+        感情や歴史を大切にしながら、<br>それに経営判断が振り回されない。<br>そんな関係と仕組みを、一緒につくります。
+      </p>
+      <p class="text-[0.92rem] leading-[2] text-sub md:text-[0.98rem]">
+        まずは、今の状況をお聞かせください。<br>「うちの場合はどうだろう」というご相談からで構いません。
+      </p>
+    </div>
+
+    <div class="reveal mb-10">
+      <p class="label-en section-label mb-5 text-[0.68rem] text-sub">Contact</p>
+      <h2 class="mb-5 text-[1.35rem] font-bold leading-[1.8] tracking-[0.03em] text-ink md:text-[1.9rem]">お問い合わせ・ご相談</h2>
+      <p class="text-[0.88rem] leading-[1.95] text-sub md:text-[0.92rem]">お送りいただいた内容は、ご相談への回答のためにのみ使用します。</p>
+    </div>
+
+    <form id="contactForm" action="https://ssgform.com/s/AkvgCJEs2nHo" method="post" class="reveal border border-line bg-mist p-6 md:p-10">
+
+      <div class="mb-7">
+        <label for="f-name" class="mb-2 block text-[0.88rem] tracking-[0.05em] text-ink">
+          お名前<span class="ml-2 text-[0.75rem] text-accent">（必須）</span>
+        </label>
+        <input id="f-name" name="お名前" type="text" required autocomplete="name"
+               class="w-full rounded border border-line bg-base px-4 py-3 text-[0.95rem] leading-[1.8] text-ink placeholder:text-sub/70">
+      </div>
+
+      <div class="mb-7">
+        <label for="f-company" class="mb-2 block text-[0.88rem] tracking-[0.05em] text-ink">会社名</label>
+        <input id="f-company" name="会社名" type="text" autocomplete="organization"
+               class="w-full rounded border border-line bg-base px-4 py-3 text-[0.95rem] leading-[1.8] text-ink placeholder:text-sub/70">
+      </div>
+
+      <div class="mb-7">
+        <label for="f-email" class="mb-2 block text-[0.88rem] tracking-[0.05em] text-ink">
+          メールアドレス<span class="ml-2 text-[0.75rem] text-accent">（必須）</span>
+        </label>
+        <input id="f-email" name="メールアドレス" type="email" required autocomplete="email"
+               class="w-full rounded border border-line bg-base px-4 py-3 text-[0.95rem] leading-[1.8] text-ink placeholder:text-sub/70">
+      </div>
+
+      <div class="mb-7">
+        <label for="f-tel" class="mb-2 block text-[0.88rem] tracking-[0.05em] text-ink">電話番号</label>
+        <input id="f-tel" name="電話番号" type="tel" autocomplete="tel"
+               class="w-full rounded border border-line bg-base px-4 py-3 text-[0.95rem] leading-[1.8] text-ink placeholder:text-sub/70">
+      </div>
+
+      <fieldset class="mb-7">
+        <legend class="mb-3 block text-[0.88rem] tracking-[0.05em] text-ink">お立場</legend>
+        <div class="flex flex-wrap gap-x-6 gap-y-3">
+          <div class="flex items-center gap-2">
+            <input id="f-role-1" name="お立場" type="radio" value="先代・社長" class="h-4 w-4 accent-[#4A4A4A]">
+            <label for="f-role-1" class="text-[0.92rem] leading-[1.8] text-ink">先代・社長</label>
+          </div>
+          <div class="flex items-center gap-2">
+            <input id="f-role-2" name="お立場" type="radio" value="後継者" class="h-4 w-4 accent-[#4A4A4A]">
+            <label for="f-role-2" class="text-[0.92rem] leading-[1.8] text-ink">後継者</label>
+          </div>
+          <div class="flex items-center gap-2">
+            <input id="f-role-3" name="お立場" type="radio" value="配偶者・ご家族" class="h-4 w-4 accent-[#4A4A4A]">
+            <label for="f-role-3" class="text-[0.92rem] leading-[1.8] text-ink">配偶者・ご家族</label>
+          </div>
+          <div class="flex items-center gap-2">
+            <input id="f-role-4" name="お立場" type="radio" value="その他" class="h-4 w-4 accent-[#4A4A4A]">
+            <label for="f-role-4" class="text-[0.92rem] leading-[1.8] text-ink">その他</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="mb-8">
+        <label for="f-message" class="mb-2 block text-[0.88rem] tracking-[0.05em] text-ink">ご相談内容</label>
+        <textarea id="f-message" name="ご相談内容" rows="6"
+                  placeholder="息子に会社を継がせたいが、話し合うとすぐに言い合いになってしまう"
+                  class="w-full rounded border border-line bg-base px-4 py-3 text-[0.95rem] leading-[1.9] text-ink placeholder:text-sub/70"></textarea>
+      </div>
+
+      <p class="mb-7 text-[0.82rem] leading-[1.9] text-sub">送信いただいた内容は、守秘を前提に扱います。</p>
+
+      <button id="submitBtn" type="submit"
+              class="w-full rounded border border-accent bg-accent px-7 py-4 text-[0.98rem] tracking-[0.08em] text-base transition-colors hover:border-accentDark hover:bg-accentDark disabled:cursor-not-allowed disabled:opacity-60">
+        この内容で送信する
+      </button>
+
+    </form>
+
+  </div>
+</section>
+
+</main>
+
+<!-- ============================= フッター ============================= -->
+<footer class="border-t border-line bg-mist px-5 py-14 md:px-8 md:py-16">
+  <div class="mx-auto max-w-5xl">
+    <p class="mb-5 text-[0.98rem] tracking-[0.06em] text-ink">家族経営のためのシステムコーチング</p>
+    <p class="mb-5 text-[0.88rem] tracking-[0.05em] text-sub">小笠原 咲絵／星野 直道</p>
+    <p class="mb-8"><span class="placeholder">【連絡先・所在地を記入】</span></p>
+    <p class="label-en text-[0.68rem] text-sub">&copy; 2026 Systems Coaching for Family Business</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* --- 固定ヘッダーの背景切り替え --- */
+  var header = document.getElementById('siteHeader');
+  function syncHeader() {
+    if (window.scrollY > 8) {
+      header.classList.add('bg-base/90', 'backdrop-blur-sm', 'border-line');
+      header.classList.remove('border-transparent');
+    } else {
+      header.classList.remove('bg-base/90', 'backdrop-blur-sm', 'border-line');
+      header.classList.add('border-transparent');
+    }
+  }
+  syncHeader();
+  window.addEventListener('scroll', syncHeader, { passive: true });
+
+  /* --- ハンバーガーメニュー --- */
+  var navToggle = document.getElementById('navToggle');
+  var mobileNav = document.getElementById('mobileNav');
+  var navLabel = navToggle.querySelector('.nav-toggle-label');
+
+  function setNav(open) {
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    mobileNav.classList.toggle('hidden', !open);
+    navLabel.textContent = open ? 'メニューを閉じる' : 'メニューを開く';
+  }
+  navToggle.addEventListener('click', function () {
+    setNav(navToggle.getAttribute('aria-expanded') !== 'true');
+  });
+  Array.prototype.forEach.call(mobileNav.querySelectorAll('a'), function (link) {
+    link.addEventListener('click', function () { setNav(false); });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { setNav(false); }
+  });
+
+  /* --- スクロールでふわっと表示（一度だけ） --- */
+  var revealTargets = document.querySelectorAll('.reveal');
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    Array.prototype.forEach.call(revealTargets, function (el) { el.classList.add('is-visible'); });
+  } else {
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+    Array.prototype.forEach.call(revealTargets, function (el) { revealObserver.observe(el); });
+  }
+
+  /* --- 画面外ではヒーロー背景アニメを止める --- */
+  var heroSection = document.getElementById('top');
+  var heroLines = document.getElementById('heroLines');
+
+  if ('IntersectionObserver' in window) {
+    var heroObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        heroLines.classList.toggle('is-paused', !entry.isIntersecting);
+      });
+    }, { threshold: 0 });
+    heroObserver.observe(heroSection);
+  }
+
+  /* --- 送信ボタンの連打防止（送信処理自体はSSGformの標準動作） --- */
+  var contactForm = document.getElementById('contactForm');
+  var submitBtn = document.getElementById('submitBtn');
+  contactForm.addEventListener('submit', function () {
+    window.setTimeout(function () {
+      submitBtn.disabled = true;
+      submitBtn.textContent = '送信中…';
+    }, 0);
+  });
+})();
+</script>
+
+</body>
+</html>
